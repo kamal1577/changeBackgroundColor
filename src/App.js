@@ -1,22 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
 
 function App() {
+
+  const [background, setBackground] = useState('#f0f0f0');
+  const [text, setText]= useState('Primary Text');
+
+  const changeStyles = ()=>{
+    //generate random color
+    const randomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
+    setBackground(randomColor);
+
+    const randomText =`Happy Coding! ${Math.floor(Math.random() * 100)+1}`;
+    setText(randomText);
+
+  }
   return (
-    <div className="App">
+    <div className="App" style = {{backgroundColor: background}}>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        <h1>{text}</h1>
+        <button onClick = {changeStyles}>Change Styles</button>
+        
       </header>
     </div>
   );
